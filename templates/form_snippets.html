@@ -1,0 +1,34 @@
+{% for field in form %}
+    {% if not field.is_hidden %}
+        <div class="form-group {% if field.errors %}has-error{% endif %}" id="{{ field.auto_id }}_field_group">
+            <!-- Label -->
+            <label for="id_{{field.name}}" class="col-sm-2 control-label">
+                {{ field.label }}
+                </label>
+
+            <!-- Fields -->
+            <div class="col-sm-10">
+                {{ field }}
+
+                <!-- Help Text -->
+                {% if field.field.required %}
+                    <b class="required-field">*</b>
+                {% endif %}
+
+                <!-- Errors -->
+                {% for error in field.errors %}
+                    <span class="errorMessage">{{error}}</span>
+                {% endfor %}
+
+                <!-- Help Text -->
+                {% if field.help_text %}
+                    <span class="help-block" data-rel="popover" data-trigger="hover" data-placement="left" data-content="{{ field.help_text }}" title="" data-original-title="Ayuda">{{ field.help_text }}</span>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="space-4"></div>
+    {% else %}
+        {{ field }}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %} <!-- Esta parte del codigo invoca al archivo base.html donde se encuentran los estilos y scripts -->
+
+
+{% block camino %} <!-- Bloque para el camino de hormigas -->
+
+<li class=""><a href="dashboard.html"><i class="icon-home"></i>ayuda</a></li>
+
+{% endblock camino %}
+
+{% block contenedor %} <!-- Bloque para el contenido -->
+
+
+           Registro Tiendas
+
+                <table id="table_instituciones" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            <center>ID</center>
+                        </th>
+                        <th>
+                            <center>Nombre</center>
+                        </th>
+                        <th>
+                            <center>Direccion</center>
+                        </th>
+                        <th>
+                            <center>correo</center>
+                        </th>
+                        <th>
+                            <center>Estatus</center>
+                        </th>
+                        <th>
+                            <center>Acciones</center>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for tienda in tiendas %}
+                        <tr class="{% if tienda.estatus == 1 %}active{% else %}warning{% endif %}">
+                            <td>{{ tienda.id }}</td>
+                            <td>{{ tienda.nombre }}</td>
+                            <td>{{ tienda.direccion }}</td>
+                            <td>{{ tienda.correo }}</td>
+                            <td>{{ tienda.get_estatus_display }}</td>
+                            <td>
+                                <center>
+                                    <a href="{% url "tienda:eliminar-tienda" tienda.id %}">Eliminar
+                                    </a>
+                                      <a href="{% url "tienda:editar-tienda" tienda.id %}" >Editar
+                                      </a>
+
+                               </center>
+
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+
+
+
+
+{% endblock contenedor %}
+
+{% block jquery %}
+
+
+{% endblock %}

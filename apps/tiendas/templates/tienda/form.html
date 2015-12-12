@@ -1,0 +1,18 @@
+{% extends "base.html" %} <!-- Esta parte del codigo invoca al archivo base.html donde se encuentran los estilos y scripts -->
+
+
+{% block contenedor %} <!-- Bloque para el contenido -->
+    <form action="" class="form-horizontal" method="post">
+    {% csrf_token %}
+    {% include "form_snippets.html" %}
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Guardar</button>
+    </div>
+  </div>
+    </form>
+{% endblock contenedor %}
+
+
+
+

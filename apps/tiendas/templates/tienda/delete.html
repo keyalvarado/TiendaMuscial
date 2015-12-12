@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenedor %}
+    <div class="grid_2">
+    <div class="da-panel collapsible">
+        <div class="da-panel-header">
+            <span class="da-panel-title">
+
+                Panel Label
+            </span>
+        </div>
+        <div class="da-panel-content">
+
+            <form class="da-form" action="" method="post">
+    {% csrf_token %}
+            <div class="da-message warning">
+            <p>Esta seguro que desea eliminar este registro "{{ object.tienda }}"?</p>
+            </div>
+            <div class="da-button-row">
+    <input type="submit" value="Aceptar" class="btn btn-success">
+        <a class="btn btn-danger" href="{% url 'tienda:lista-tienda' %}">
+          Cancelar</a>
+                </div>
+
+    </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock contenedor %}
